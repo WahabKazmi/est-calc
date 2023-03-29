@@ -19,7 +19,7 @@
                         },
                         {
                             "name": "Very detailed oriented, we need to make sure all the small details are right",
-                            "price": 0
+                            "price": "0"
                         }
                     ]
                 }

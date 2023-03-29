@@ -42,16 +42,16 @@
 }
 .btn {
     border-radius: 10px;
-    padding: 20px 40px;
+    padding: 10px 30px;
     background-color: $secondaryColor;
     text-decoration: none;
     border: 1px solid $secondaryColor;
     color: $whiteColor;
-    font-size: auto-clamp(16, 20);
+    font-size: auto-clamp(14, 18);
     transition: .5s ease;
     &:hover,
     &.active {
-        background-color: $whiteColor;
+        background-color: $primaryColor;
         color: $secondaryColor;
     }
 }

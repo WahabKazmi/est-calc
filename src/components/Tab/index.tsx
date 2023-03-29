@@ -7,7 +7,7 @@ const Tab = () => {
             <div className="tab">
                 <div className="tab-menu-wrapper">
                     <Link className="btn" to="website-development">Website Development</Link>
-                    <Link className="btn" to="report-design">Website Design</Link>
+                    <Link className="btn" to="report-design">Report Design</Link>
                     <Link className="btn" to="video-production">Video Production</Link>
                     <Link className="btn" to="animation">Animation</Link>
                 </div>
