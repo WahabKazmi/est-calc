@@ -1,0 +1,31 @@
+@import "./../../styles/color.scss";
+.range-selector {
+    padding: 20px 0px;
+    .track {
+        height: 6px;
+        width: 100%;
+        background-color: #ccc;
+        div {
+            transition: .2s ease;
+        }
+    }
+    .thumb {
+        padding: 5px;
+        background-color: $primaryColor;
+        outline: none;
+        border: 1px solid $secondaryColor;
+    }
+    .range-wrapper {
+        padding: 10px 0px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        div:first-child:not(.thumb),
+        div:last-child:not(.thumb) {
+            width: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}

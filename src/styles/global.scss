@@ -1,0 +1,57 @@
+@import "./color.scss";
+@import "./function.scss";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: $whiteColor;
+    word-break: break-word;
+}
+
+/* Miscellaneous */
+.page {
+    background-color: $primaryColor;
+    min-height: 100vh;
+    width: 100%;
+    padding: 40px 20px;
+}
+
+.container {
+    max-width: 1600px;
+    margin: auto;
+}
+
+/* Helper Classes */
+.title {
+    font-size: auto-clamp(28, 44);
+}
+.lead {
+    font-size: auto-clamp(16, 20);
+}
+.text {
+    &-center {
+        text-align: center;
+    }
+    &-left {
+        text-align: left;
+    }
+    &-right {
+        text-align: right;
+    }
+}
+.btn {
+    border-radius: 10px;
+    padding: 20px 40px;
+    background-color: $secondaryColor;
+    text-decoration: none;
+    border: 1px solid $secondaryColor;
+    color: $whiteColor;
+    font-size: auto-clamp(16, 20);
+    transition: .5s ease;
+    &:hover,
+    &.active {
+        background-color: $whiteColor;
+        color: $secondaryColor;
+    }
+}

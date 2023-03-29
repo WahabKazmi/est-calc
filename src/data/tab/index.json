@@ -1,0 +1,69 @@
+{
+    "tabs": {
+        "website-development": {
+            "questions": [
+                {
+                    "name": "How many pages do you estimate we'll need to design / develop? Note: Page templates count as one page. For example, a 'Product' page template could be used for each product you offer.",
+                    "type": "slider",
+                    "min": "0",
+                    "max": "400",
+                    "price": "1000"
+                },
+                {
+                    "name": "How detail oriented does the animation need to be?",
+                    "type": "radio",
+                    "radio": [
+                        {
+                            "name": "Fair amount of attention to detail, but we aren't going to nit-pick",
+                            "price": "1000"
+                        },
+                        {
+                            "name": "Very detailed oriented, we need to make sure all the small details are right",
+                            "price": 0
+                        }
+                    ]
+                }
+            ]
+        },
+        "report-design": {
+            "questions": [
+                {
+                    "name": "Number of pages:",
+                    "type": "slider",
+                    "min": "0",
+                    "max": "400",
+                    "price": "1000"
+                },
+                {
+                    "name": "How many custom graphics will we need to create? (These are graphics we need to custom design and that can't be found via stock sites or provided by client).",
+                    "type": "slider",
+                    "min": "0",
+                    "max": "400",
+                    "price": "1000"
+                }
+            ]
+        },
+        "video-production": {
+            "questions": [
+                {
+                    "name": "How many minutes will the video be?",
+                    "type": "slider",
+                    "min": "0",
+                    "max": "25",
+                    "price": "1000"
+                }
+            ]
+        },
+        "animation": {
+            "questions": [
+                {
+                    "name": "How many minutes will the video be?",
+                    "type": "slider",
+                    "min": "0",
+                    "max": "25",
+                    "price": "1000"
+                }
+            ]
+        }
+    }
+}

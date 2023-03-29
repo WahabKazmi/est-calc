@@ -1,0 +1,13 @@
+$base-viewport: 1600;
+$minimum-viewport: 320;
+@function auto-clamp($min,
+  $max,
+  $unit: 1px,
+  $max-viewport: $base-viewport,
+  $min-viewport: $minimum-viewport ) {
+  $max-size: calc($max * $unit);
+  $min-size: calc($min * $unit);
+  $preferred-size: calc($min-size + ($max - $min) * ((100vw - (#{$min-viewport} * #{$unit})) / (#{$max-viewport} - #{$min-viewport})));
+
+  @return clamp($min-size, $preferred-size, $max-size);
+}
