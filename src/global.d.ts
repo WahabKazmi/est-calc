@@ -4,8 +4,11 @@ interface QuestionType {
     max: number;
     price: number;
     name: string;
+    group: string;
     radio: {
         price: number;
         name: string;
+        value: string;
+        checked: boolean;
     }[]
 }

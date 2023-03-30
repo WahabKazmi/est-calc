@@ -11,42 +11,57 @@
         {
           "name": "How detail oriented does the animation need to be?",
           "type": "radio",
+          "group": "detail-oriented",
           "radio": [
             {
               "name": "Fair amount of attention to detail, but we aren't going to nit-pick",
-              "price": "1000"
+              "price": "1000",
+              "checked": false,
+              "value": "fair-amount"
             },
             {
               "name": "Very detailed oriented, we need to make sure all the small details are right",
-              "price": "0"
+              "price": "0",
+              "checked": true,
+              "value": "very-detailed"
             }
           ]
         },
         {
           "name": "Will the pages require us to create custom graphics?",
           "type": "radio",
+          "group": "custom-graphics",
           "radio": [
             {
               "name": "Yes, I'd love you to create illustrations for each page.",
-              "price": "1000"
+              "price": "1000",
+              "value": "yes",
+              "checked": false
             },
             {
               "name": "No, we'll be providing photography or using stock graphics/photos.",
-              "price": "0"
+              "price": "0",
+              "value": "no",
+              "checked": true
             }
           ]
         },
         {
           "name": "Are we building any advanced functionality? Example: Integrating with an ERP, or dynamically displaying data from a database",
           "type": "radio",
+          "group": "advanced-func",
           "radio": [
             {
               "name": "Yes, we'd like our website to tie into our other systems.",
-              "price": "1000"
+              "price": "1000",
+              "value": "yes",
+              "checked": false
             },
             {
               "name": "No, our website will be mainly lead generating / static.",
-              "price": "0"
+              "price": "0",
+              "value": "no",
+              "checked": true
             }
           ]
         }
@@ -71,28 +86,38 @@
         {
           "name": "Are we creating the overall style of the report or is there already a defined style guide?",
           "type": "radio",
+          "group": "style-guide",
           "radio": [
             {
               "name": "Yes, we need you to create an overall style for the report.",
-              "price": "1000"
+              "price": "1000",
+              "value": "yes",
+              "checked": false
             },
             {
               "name": "No, we have a defined style guide for you to use.",
-              "price": "0"
+              "price": "0",
+              "value": "no",
+              "checked": true
             }
           ]
         },
         {
           "name": "Do you need us to make the document 508 compliant?",
           "type": "radio",
+          "group": "compliant",
           "radio": [
             {
               "name": "Yes, we need to comply with Section 508 Accessibility Standards.",
-              "price": "1000"
+              "price": "1000",
+              "value": "yes",
+              "checked": false
             },
             {
               "name": "No, we don't need to have 508 compliance.",
-              "price": "0"
+              "price": "0",
+              "value": "no",
+              "checked": true
             }
           ]
         }
@@ -110,32 +135,44 @@
         {
           "name": "How polished do you want the video to be?",
           "type": "radio",
+          "group": "polished-video",
           "radio": [
             {
               "name": "I'm not looking for anything crazy—just professional.",
-              "price": "1000"
+              "price": "1000",
+              "value": "not-crazy",
+              "checked": false
             },
             {
               "name": "I don't need Hollyood, but it should be pretty cinematic.",
-              "price": "0"
+              "price": "0",
+              "value": "no-hollywood",
+              "checked": true
             },
             {
               "name": "I want Hollywood level of production",
-              "price": "2000"
+              "price": "2000",
+              "value": "yes",
+              "checked": false
             }
           ]
         },
         {
           "name": "Will travel outside of Denver metro be required?",
           "type": "radio",
+          "group": "travel-outside",
           "radio": [
             {
               "name": "Yes",
-              "price": "1000"
+              "price": "1000",
+              "value": "yes",
+              "checked": false
             },
             {
               "name": "No",
-              "price": "0"
+              "price": "0",
+              "value": "no",
+              "checked": true
             }
           ]
         }
@@ -153,14 +190,19 @@
         {
           "name": "How polished do you want the video to be?",
           "type": "radio",
+          "group": "polished-video",
           "radio": [
             {
               "name": "Fair amount of attention to detail, but we aren't going to nit-pick",
-              "price": "0"
+              "price": "0",
+              "value": "fair",
+              "checked": true
             },
             {
               "name": "Very detailed oriented, we need to make sure all the small details are right",
-              "price": "1000"
+              "price": "1000",
+              "value": "detailed",
+              "checked": false
             }
           ]
         }

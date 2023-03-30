@@ -90,12 +90,12 @@ const Tab = () => {
                             />
                             : isError ?
                                 <TabError />
-                                : data?.questions.map(({ type, min, max, price, name, radio }: QuestionType, key: string) => {
+                                : data?.questions.map(({ type, min, max, price, name, radio, group }: QuestionType, key: string) => {
                                     return (
                                         <div className="question-wrapper" key={key}>
                                             {(type === 'slider') ?
                                                 <RangeSelector {...{ min, max, price, name, key }} />
-                                                : <RadioSelector {...{ name, radio, key }} />}
+                                                : <RadioSelector {...{ name, radio, group, key }} />}
                                         </div>
                                     )
                                 })}
