@@ -3,8 +3,8 @@ interface PropType {
     name: string;
     radio: {
         name: string;
-        price: string;
-    }[] | unknown
+        price: number;
+    }[]
 }
 
 const RadioSelector = ({ name, radio }: PropType) => {
@@ -12,11 +12,11 @@ const RadioSelector = ({ name, radio }: PropType) => {
         <div className="radio-selector">
             <p className="lead">{name}</p>
             <div className="radio-wrapper">
-                {radio?.map(radio => {
+                {radio?.map(({name}) => {
                     return (
-                        <div className="radio">
-                            <input type="radio" id={radio.name} name="radio-group" checked />
-                            <label htmlFor={radio.name}>{radio.name}</label>
+                        <div className="radio" key={name}>
+                            <input type="radio" id={name?.toLocaleLowerCase()?.replaceAll(' ', '-')} name="radio-group" />
+                            <label htmlFor={name?.toLocaleLowerCase()?.replaceAll(' ', '-')}>{name}</label>
                         </div>
                     )
                 })}

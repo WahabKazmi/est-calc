@@ -3,15 +3,14 @@ import { Range } from 'react-range';
 import "./style.scss";
 
 interface PropType {
-    max: string;
-    min: string;
-    price: string;
+    max: number;
+    min: number;
+    price: number;
     name: string;
 }
 
-const RangeSelector = ({ max = '10', min = '0', price, name }: PropType) => {
+const RangeSelector = ({ max, min, price, name }: PropType) => {
     const [value, setValue] = useState([0]);
-    console.log(value)
     return (
         <div className="range-selector">
             <p className="lead">How many minutes will the video be?</p>
@@ -22,7 +21,7 @@ const RangeSelector = ({ max = '10', min = '0', price, name }: PropType) => {
                 <Range
                     step={1}
                     min={0}
-                    max={+max}
+                    max={max}
                     values={value}
                     onChange={(values) => setValue(values)}
                     renderTrack={({ props, children }) => (

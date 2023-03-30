@@ -4,7 +4,8 @@
     .radio-wrapper {
         display: grid;
         grid-gap: 10px;
-        padding-top: 20px;
+        padding-top: 10px;
+        padding-left: 10px;
         .radio {
             [type="radio"]:checked,
             [type="radio"]:not(:checked) {
@@ -19,7 +20,7 @@
                 cursor: pointer;
                 line-height: 20px;
                 display: inline-block;
-                color: #666;
+                color: $whiteColor;
             }
 
             [type="radio"]:checked+label:before,

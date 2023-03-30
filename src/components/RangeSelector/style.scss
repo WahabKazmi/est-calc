@@ -1,6 +1,7 @@
 @import "./../../styles/color.scss";
 .range-selector {
-    padding: 20px 0px;
+    display: grid;
+    grid-gap: 10px;
     .track {
         height: 6px;
         width: 100%;

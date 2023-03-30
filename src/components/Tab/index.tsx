@@ -1,18 +1,105 @@
-import { Link, Outlet } from "react-router-dom";
-import './style.scss'
+import { useEffect, useState } from "react";
+import { ThreeDots } from "react-loader-spinner";
+import { Link, useSearchParams } from "react-router-dom";
+import { useGetQuestionsByNameQuery } from "../../services/tabs";
+import RadioSelector from "../RadioSelector";
+import RangeSelector from "../RangeSelector";
+import TabError from "./Error";
+import './style.scss';
+
+const tabMenu = [
+    {
+        name: 'Website Development',
+        param: 'website-development'
+    },
+    {
+        name: 'Report Design',
+        param: 'report-design'
+    },
+    {
+        name: 'Video Production',
+        param: 'video-production'
+    },
+    {
+        name: 'Animation',
+        param: 'animation'
+    }
+]
 
 const Tab = () => {
+    const [params] = useSearchParams();
+    const { data, isError, isLoading } = useGetQuestionsByNameQuery(params.get('tab') || 'website-development');
+    const [isActiveMenu, setIsActiveMenu] = useState(true);
+
+
+    const getActiveTabClass = (currParam: string) => {
+        if (!params.get('tab') && currParam === 'website-development') return `active`
+        else if (currParam === params.get('tab')) return `active`
+        else return '';
+    }
+
+    useEffect(() => {
+        if (window.innerWidth <= 768) setIsActiveMenu(false);
+
+        function handleResize() {
+            if (window.innerWidth <= 768) setIsActiveMenu(false)
+            else setIsActiveMenu(true)
+        }
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+
+    }, [params.get('tab')])
+
     return (
         <>
             <div className="tab">
                 <div className="tab-menu-wrapper">
-                    <Link className="btn" to="website-development">Website Development</Link>
-                    <Link className="btn" to="report-design">Report Design</Link>
-                    <Link className="btn" to="video-production">Video Production</Link>
-                    <Link className="btn" to="animation">Animation</Link>
+                    <div className="menu-selector">
+                        <button type="button"
+                            className="btn text-center"
+                            onClick={() => setIsActiveMenu(true)}
+                        >
+                            {params.get('tab')?.replaceAll('-', ' ')}
+                        </button>
+                    </div>
+                    {isActiveMenu &&
+                        <ul>
+                            {tabMenu.map(({ name, param }) => {
+                                return <li>
+                                    <Link className={`btn text-center ${getActiveTabClass(param)}`} to={`?tab=${param}`}>{name}</Link>
+                                </li>
+                            })}
+                        </ul>}
+
                 </div>
                 <div className="tab-content">
-                    <Outlet />
+                    <div className="tab-body">
+                        {isLoading ?
+                            <ThreeDots
+                                height="80"
+                                width="80"
+                                radius="9"
+                                color="#1199bd"
+                                ariaLabel="three-dots-loading"
+                                wrapperStyle={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+                                visible={true}
+                            />
+                            : isError ?
+                                <TabError />
+                                : data?.questions.map(({ type, min, max, price, name, radio }: QuestionType, key: string) => {
+                                    return (
+                                        <div className="question-wrapper" key={key}>
+                                            {(type === 'slider') ?
+                                                <RangeSelector {...{ min, max, price, name, key }} />
+                                                : <RadioSelector {...{ name, radio, key }} />}
+                                        </div>
+                                    )
+                                })}
+                    </div>
                 </div>
             </div>
         </>

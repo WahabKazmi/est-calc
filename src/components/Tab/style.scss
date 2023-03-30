@@ -2,15 +2,61 @@
 
 .tab {
     &-menu-wrapper {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        grid-gap: 10px;
-        padding: 30px 0px;
+        padding-top: 30px;
+        position: relative;
+        .menu-selector {
+            button {
+                display: block;
+                width: 100%;
+                border-radius: 0px;
+                text-transform: capitalize;
+                background-color: $primaryColor;
+                cursor: pointer;
+            }
+        }
+        ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            grid-gap: 10px;
+            padding-bottom: 30px;
+            li {
+                list-style: none;
+            }
+            @media (max-width: 768px) {
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0%;
+                width: 100%;
+                z-index: 2;
+                grid-gap: 0px;
+                li {
+                    width: 100%;
+                    a {
+                        display: block;
+                        border-radius: 0px;
+                    }
+                }
+            }
+        }
+        .menu-selector {
+            @media (min-width: 768px) {
+                display: none;
+            }
+        }
     }
     &-content {
         border-radius: 10px;
         border: 1px solid $secondaryColor;
         padding: 20px;
+        @media (max-width: 768px) {
+            border-radius: 0px;
+        }
+    }
+    .question-wrapper {
+        &:not(:last-child) {
+            margin-bottom: 30px;
+        }
     }
 }
