@@ -1,8 +1,9 @@
-import { InputHTMLAttributes } from "react";
+import { useState } from "react";
 import "./style.scss";
 interface PropType {
   name: string;
   group: string;
+  handleChange: (prevValue: number, newValue: number) => void;
   radio: {
     name: string;
     value: string;
@@ -11,27 +12,42 @@ interface PropType {
   }[];
 }
 
-const RadioSelector = ({ name, radio, group }: PropType) => {
-  // console.log(group)
-  const handleChange = (e: any) => {
-    console.log(e.target.value);
-  };
+const RadioSelector = ({ name, radio, group, handleChange }: PropType) => {
+  const [prevPrice, setPrevPrice] = useState(0);
+  const [selectedValue, setSelectedValue] = useState(
+    radio.find((item) => item.checked === true)
+  );
+
   return (
     <div className="radio-selector">
       <p className="lead">{name}</p>
       <div className="radio-wrapper">
-        {radio?.map(({ name, value, checked }) => {
+        {radio?.map(({ name, value, checked, price }) => {
           return (
             <div className="radio" key={name}>
               <input
                 type="radio"
-                id={group}
+                id={`${group}-${value}`}
                 name={group}
                 value={value}
-                checked={checked}
-                onChange={handleChange}
+                checked={selectedValue?.value === value}
+                onChange={(e) => {
+                  setSelectedValue((prev) => {
+                    setPrevPrice(prev?.price as number);
+                    return {
+                      name,
+                      value: e?.target?.value,
+                      price,
+                      checked: true,
+                    };
+                  });
+                  handleChange(
+                    selectedValue ? +selectedValue?.price : 0,
+                    +price
+                  );
+                }}
               />
-              <label htmlFor={group}>{name}</label>
+              <label htmlFor={`${group}-${value}`}>{name}</label>
             </div>
           );
         })}

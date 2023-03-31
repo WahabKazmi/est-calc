@@ -43,11 +43,8 @@ const Tab = () => {
 
   const handleChange = (prevValue: number, newValue: number) => {
     let scoppedTotal = 0;
-
     scoppedTotal = total - prevValue;
-
     scoppedTotal += newValue;
-
     setTotal(scoppedTotal);
   };
 
@@ -58,6 +55,8 @@ const Tab = () => {
       if (window.innerWidth <= 768) setIsActiveMenu(false);
       else setIsActiveMenu(true);
     }
+
+    setTotal(0);
 
     window.addEventListener("resize", handleResize);
 
@@ -124,10 +123,19 @@ const Tab = () => {
                     <div className="question-wrapper" key={key}>
                       {type === "slider" ? (
                         <RangeSelector
-                          {...{ min, max, price, name, handleChange, key }}
+                          {...{
+                            min,
+                            max,
+                            price,
+                            name,
+                            handleChange,
+                            key: params.get("tab"),
+                          }}
                         />
                       ) : (
-                        <RadioSelector {...{ name, radio, group, key }} />
+                        <RadioSelector
+                          {...{ name, radio, group, handleChange, key }}
+                        />
                       )}
                     </div>
                   );
