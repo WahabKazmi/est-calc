@@ -15,7 +15,7 @@ const RangeSelector = ({ max, min, price, name, handleChange }: PropType) => {
 
   const rangeRange = (value: number) => {
     setValue((prev) => {
-      handleChange(prev, value);
+      handleChange(prev * price, value * price);
       return value;
     });
   };
