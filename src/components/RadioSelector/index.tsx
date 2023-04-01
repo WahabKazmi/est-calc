@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./style.scss";
+import React from "react";
 interface PropType {
   name: string;
   group: string;
@@ -13,7 +14,6 @@ interface PropType {
 }
 
 const RadioSelector = ({ name, radio, group, handleChange }: PropType) => {
-  const [prevPrice, setPrevPrice] = useState(0);
   const [selectedValue, setSelectedValue] = useState(
     radio.find((item) => item.checked === true)
   );
@@ -22,7 +22,7 @@ const RadioSelector = ({ name, radio, group, handleChange }: PropType) => {
     <div className="radio-selector">
       <p className="lead">{name}</p>
       <div className="radio-wrapper">
-        {radio?.map(({ name, value, checked, price }) => {
+        {radio?.map(({ name, value, price }) => {
           return (
             <div className="radio" key={name}>
               <input
@@ -32,14 +32,11 @@ const RadioSelector = ({ name, radio, group, handleChange }: PropType) => {
                 value={value}
                 checked={selectedValue?.value === value}
                 onChange={(e) => {
-                  setSelectedValue((prev) => {
-                    setPrevPrice(prev?.price as number);
-                    return {
-                      name,
-                      value: e?.target?.value,
-                      price,
-                      checked: true,
-                    };
+                  setSelectedValue({
+                    name,
+                    value: e?.target?.value,
+                    price,
+                    checked: true,
                   });
                   handleChange(
                     selectedValue ? +selectedValue?.price : 0,
@@ -55,4 +52,4 @@ const RadioSelector = ({ name, radio, group, handleChange }: PropType) => {
     </div>
   );
 };
-export default RadioSelector;
+export default React.memo(RadioSelector);

@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { Range } from "react-range";
+import { useState } from "react";
 import "./style.scss";
+import React from "react";
 
 interface PropType {
   max: number;
@@ -44,4 +44,4 @@ const RangeSelector = ({ max, min, price, name, handleChange }: PropType) => {
   );
 };
 
-export default RangeSelector;
+export default React.memo(RangeSelector);
