@@ -67,10 +67,15 @@ const Tab = () => {
   /* Handlers */
   const handleChange = useCallback(
     (prevValue: number, newValue: number) => {
-      let scoppedTotal = 0;
-      scoppedTotal = total - prevValue;
-      scoppedTotal += newValue;
-      setTotal(scoppedTotal);
+      console.log({prevValue, newValue})
+      if (total !== 0) {
+        let scoppedTotal = 0;
+        scoppedTotal = total - prevValue;
+        scoppedTotal += newValue;
+        setTotal(scoppedTotal);
+      } else {
+        setTotal(newValue)
+      }
     },
     [total]
   );
